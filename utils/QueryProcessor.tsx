@@ -18,5 +18,14 @@ export default function QueryProcessor(query: string): string {
     return (num1 + num2).toString();
   }
 
+   const largestMatch = query.toLowerCase().match(/which of the following numbers is the largest: ([\d,\s]+)/);
+  if (largestMatch) {
+    const numbers = largestMatch[1]
+      .split(",")
+      .map((num) => parseInt(num.trim(), 10));
+    const largest = Math.max(...numbers);
+    return largest.toString();
+  }
+
   return "Rohan";
 }
