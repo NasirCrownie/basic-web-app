@@ -11,9 +11,12 @@ export default function QueryProcessor(query: string): string {
     return ("ncrownie");
   }
 
-  if (query.toLowerCase().includes("name")) {
-    return "Rohan";
+  const additionMatch = query.toLowerCase().match(/what is (\d+) plus (\d+)\?/);
+  if (additionMatch) {
+    const num1 = parseInt(additionMatch[1], 10);
+    const num2 = parseInt(additionMatch[2], 10);
+    return (num1 + num2).toString();
   }
 
-  return "";
+  return "Rohan";
 }
